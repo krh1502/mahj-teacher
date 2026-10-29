@@ -24,12 +24,17 @@ export default function Login() {
         navigate(redirectTo, { replace: true })
       }}
       footer={
-        <>
-          New here?{' '}
-          <Link to="/signup" className="font-medium text-primary hover:underline">
-            Create an account
+        <div className="flex flex-col gap-2">
+          <Link to="/forgot-password" className="font-medium text-primary hover:underline">
+            Forgot password?
           </Link>
-        </>
+          <span>
+            New here?{' '}
+            <Link to="/signup" className="font-medium text-primary hover:underline">
+              Create an account
+            </Link>
+          </span>
+        </div>
       }
     />
   )

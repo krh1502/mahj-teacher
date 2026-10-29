@@ -9,7 +9,7 @@
     "build": "tsc -b && vite build",
     "preview": "vite preview",
     "typecheck": "tsc -b --noEmit",
-    "deploy": "pnpm build && firebase deploy"
+    "deploy:rules": "firebase deploy --only firestore"
   },
   "dependencies": {
     "firebase": "^13.1.0",
