@@ -12,7 +12,7 @@ export default function Layout() {
         <Outlet />
       </main>
       <footer className="border-t border-border py-6 text-center text-sm text-muted">
-        Mahj Teacher &middot; CS6460 Foundations of Educational Technology
+        [Footer placeholder]
       </footer>
     </div>
   )

@@ -12,8 +12,8 @@ export default function Login() {
 
   return (
     <AuthForm
-      title="Welcome back"
-      description="Log in to continue learning."
+      title="Log in"
+      description="[Description placeholder]"
       submitLabel="Log in"
       fields={[
         { name: 'email', label: 'Email', type: 'email', autoComplete: 'email' },
