@@ -30,10 +30,10 @@ firestore.rules   Users can only read/write their own users/{uid} data
 2. **Authentication** → Sign-in method → enable **Email/Password**.
 3. **Firestore Database** → create a database.
 4. **Project settings** → Your apps → add a **Web app** and copy its config values.
-5. Copy `.env.example` to `.env.local` (or add them in v0's Vars panel) and fill in the `VITE_FIREBASE_*` values.
+5. Copy `.env.example` to `.env.local` (or add them in v0's Vars panel) and fill in the `FIREBASE_*` values.
 6. Replace `your-firebase-project-id` in `.firebaserc` with your project ID.
 7. Add your Vercel domains (production, `*.vercel.app` previews, and any custom domain) under Authentication → Settings → Authorized domains.
-8. Add the same `VITE_FIREBASE_*` variables to your Vercel project (Settings → Environment Variables) so deployed builds can reach Firebase.
+8. Add the same `FIREBASE_*` variables to your Vercel project (Settings → Environment Variables) so deployed builds can reach Firebase.
 
 ## Scripts
 
