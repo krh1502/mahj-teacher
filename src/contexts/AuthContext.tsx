@@ -2,6 +2,7 @@ import { createContext, useEffect, useState, type ReactNode } from 'react'
 import {
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
   signOut as firebaseSignOut,
   updateProfile,
@@ -16,6 +17,7 @@ export interface AuthContextValue {
   signIn: (email: string, password: string) => Promise<void>
   signUp: (name: string, email: string, password: string) => Promise<void>
   signOut: () => Promise<void>
+  resetPassword: (email: string) => Promise<void>
 }
 
 export const AuthContext = createContext<AuthContextValue | null>(null)
@@ -56,6 +58,9 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     },
     async signOut() {
       await firebaseSignOut(requireAuth())
+    },
+    async resetPassword(email) {
+      await sendPasswordResetEmail(requireAuth(), email)
     },
   }
 

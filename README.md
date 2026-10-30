@@ -7,7 +7,8 @@ Mahjong Teaching Web App for CS6460 OMSCS Fall 2026
 - React 19 + TypeScript, built with Vite
 - Tailwind CSS v4
 - React Router
-- Firebase: Authentication (email/password), Cloud Firestore, Hosting
+- Firebase: Authentication (email/password), Cloud Firestore
+- Hosting: Vercel
 
 ## Project structure
 
@@ -18,7 +19,8 @@ src/
   hooks/        useAuth
   lib/          firebase.ts (app, auth, db initialization)
   pages/        Route pages (Home, Login, Signup, Dashboard, Lessons, Practice)
-firebase.json     Hosting (SPA rewrites + security headers) and Firestore config
+vercel.json       SPA rewrites + security headers
+firebase.json     Firestore config (hosting is on Vercel)
 firestore.rules   Users can only read/write their own users/{uid} data
 ```
 
@@ -30,7 +32,8 @@ firestore.rules   Users can only read/write their own users/{uid} data
 4. **Project settings** → Your apps → add a **Web app** and copy its config values.
 5. Copy `.env.example` to `.env.local` (or add them in v0's Vars panel) and fill in the `VITE_FIREBASE_*` values.
 6. Replace `your-firebase-project-id` in `.firebaserc` with your project ID.
-7. Add your hosting/preview domains under Authentication → Settings → Authorized domains.
+7. Add your Vercel domains (production, `*.vercel.app` previews, and any custom domain) under Authentication → Settings → Authorized domains.
+8. Add the same `VITE_FIREBASE_*` variables to your Vercel project (Settings → Environment Variables) so deployed builds can reach Firebase.
 
 ## Scripts
 
@@ -38,5 +41,5 @@ firestore.rules   Users can only read/write their own users/{uid} data
 pnpm install
 pnpm dev        # start the dev server
 pnpm build      # type-check and build to dist/
-pnpm deploy     # build and run `firebase deploy` (requires firebase-tools + `firebase login`)
+pnpm deploy:rules  # publish Firestore rules/indexes (requires firebase-tools + `firebase login`)
 ```

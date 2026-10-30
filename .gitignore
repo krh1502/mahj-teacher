@@ -8,4 +8,5 @@ firebase-debug.log
 firestore-debug.log
 *.log
 .DS_Store
+.vercel
 package-lock.json

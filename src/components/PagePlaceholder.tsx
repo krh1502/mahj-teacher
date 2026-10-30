@@ -15,7 +15,7 @@ export default function PagePlaceholder({ title, description, children }: PagePl
       </header>
       {children ?? (
         <div className="rounded-xl border border-dashed border-border bg-surface p-10 text-center text-sm text-muted">
-          Coming soon.
+          [Content placeholder]
         </div>
       )}
     </section>

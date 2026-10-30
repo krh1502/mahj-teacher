@@ -12,8 +12,8 @@ export default function Login() {
 
   return (
     <AuthForm
-      title="Welcome back"
-      description="Log in to continue learning."
+      title="Log in"
+      description="[Description placeholder]"
       submitLabel="Log in"
       fields={[
         { name: 'email', label: 'Email', type: 'email', autoComplete: 'email' },
@@ -24,12 +24,17 @@ export default function Login() {
         navigate(redirectTo, { replace: true })
       }}
       footer={
-        <>
-          New here?{' '}
-          <Link to="/signup" className="font-medium text-primary hover:underline">
-            Create an account
+        <div className="flex flex-col gap-2">
+          <Link to="/forgot-password" className="font-medium text-primary hover:underline">
+            Forgot password?
           </Link>
-        </>
+          <span>
+            New here?{' '}
+            <Link to="/signup" className="font-medium text-primary hover:underline">
+              Create an account
+            </Link>
+          </span>
+        </div>
       }
     />
   )

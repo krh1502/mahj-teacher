@@ -10,8 +10,8 @@ export default function Signup() {
 
   return (
     <AuthForm
-      title="Create your account"
-      description="Start learning Mahjong today."
+      title="Sign up"
+      description="[Description placeholder]"
       submitLabel="Sign up"
       fields={[
         { name: 'name', label: 'Name', type: 'text', autoComplete: 'name' },
