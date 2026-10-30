@@ -23,7 +23,7 @@ export interface AuthContextValue {
 export const AuthContext = createContext<AuthContextValue | null>(null)
 
 function requireAuth() {
-  if (!auth) throw new Error('Firebase is not configured. Add your VITE_FIREBASE_* environment variables.')
+  if (!auth) throw new Error('Firebase is not configured. Add your FIREBASE_* environment variables.')
   return auth
 }
 
