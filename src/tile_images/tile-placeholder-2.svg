@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="220" viewBox="0 0 220 220" role="img" aria-label="Tile placeholder 2">
+  <rect width="220" height="220" rx="22" fill="#e7efe9" />
+  <rect x="18" y="18" width="184" height="184" rx="18" fill="#f8fbf8" stroke="#88a78e" stroke-width="4"/>
+  <rect x="78" y="78" width="64" height="64" rx="10" fill="#9bb79f" opacity="0.85"/>
+  <path d="M110 65 V155 M65 110 H155" stroke="#5d7e63" stroke-width="5" stroke-linecap="round" opacity="0.7"/>
+</svg>

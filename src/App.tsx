@@ -7,6 +7,9 @@ import Signup from '@/pages/Signup'
 import ForgotPassword from '@/pages/ForgotPassword'
 import Dashboard from '@/pages/Dashboard'
 import Lessons from '@/pages/Lessons'
+import LessonOne from '@/pages/lessons/LessonOne'
+import LessonTwo from '@/pages/lessons/LessonTwo'
+import LessonThree from '@/pages/lessons/LessonThree'
 import Practice from '@/pages/Practice'
 import NotFound from '@/pages/NotFound'
 
@@ -21,6 +24,9 @@ export default function App() {
         <Route element={<ProtectedRoute />}>
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="lessons" element={<Lessons />} />
+          <Route path="lessons/1" element={<LessonOne />} />
+          <Route path="lessons/2" element={<LessonTwo />} />
+          <Route path="lessons/3" element={<LessonThree />} />
           <Route path="practice" element={<Practice />} />
         </Route>
         <Route path="*" element={<NotFound />} />

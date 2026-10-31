@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="220" height="220" viewBox="0 0 220 220" role="img" aria-label="Tile placeholder 1">
+  <rect width="220" height="220" rx="22" fill="#f1e7d6" />
+  <rect x="18" y="18" width="184" height="184" rx="18" fill="#f9f6f1" stroke="#c9b58c" stroke-width="4"/>
+  <circle cx="110" cy="110" r="30" fill="#d7c59d" opacity="0.9"/>
+  <path d="M110 70 L130 110 L110 150 L90 110 Z" fill="#8f6b3b" opacity="0.65"/>
+</svg>
