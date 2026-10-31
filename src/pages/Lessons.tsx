@@ -6,6 +6,8 @@ const lessonLinks = [
   { id: '1', title: 'Lesson 1', description: 'Introduce the lesson structure and topic overview.' },
   { id: '2', title: 'Lesson 2', description: 'Build on the core concept with examples and practice.' },
   { id: '3', title: 'Lesson 3', description: 'Reinforce the material with a guided activity.' },
+  { id: '4', title: 'Lesson 4', description: 'Scaffold for additional lesson content.' },
+  { id: '5', title: 'Lesson 5', description: 'Scaffold for additional lesson content.' },
 ]
 
 export default function Lessons() {

@@ -31,9 +31,6 @@ export default function Header() {
         <nav aria-label="Main" className="flex items-center gap-1">
           {user ? (
             <>
-              <NavLink to="/dashboard" className={navLinkClass}>
-                Dashboard
-              </NavLink>
               <NavLink to="/lessons" className={navLinkClass}>
                 Lessons
               </NavLink>
