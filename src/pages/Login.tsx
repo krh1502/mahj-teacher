@@ -3,12 +3,17 @@ import AuthForm from '@/components/AuthForm'
 import { useAuth } from '@/hooks/useAuth'
 
 export default function Login() {
-  const { user, signIn } = useAuth()
+  const { user, admin, signIn } = useAuth()
   const navigate = useNavigate()
   const location = useLocation()
   const redirectTo = (location.state as { from?: string } | null)?.from ?? '/dashboard'
 
-  if (user) return <Navigate to={redirectTo} replace />
+  if (user) {
+    if (admin) {
+      return <Navigate to="/admin" replace />
+    }
+    return <Navigate to={redirectTo} replace />
+  }
 
   return (
     <AuthForm

@@ -13,6 +13,7 @@ import LessonThree from '@/pages/lessons/LessonThree'
 import LessonFour from '@/pages/lessons/LessonFour'
 import LessonFive from '@/pages/lessons/LessonFive'
 import NotFound from '@/pages/NotFound'
+import Admin from './pages/Admin'
 
 export default function App() {
   return (
@@ -23,6 +24,7 @@ export default function App() {
         <Route path="signup" element={<Signup />} />
         <Route path="forgot-password" element={<ForgotPassword />} />
         <Route element={<ProtectedRoute />}>
+          <Route path="admin" element={<Admin />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="lessons" element={<Lessons />} />
           <Route path="lessons/1" element={<LessonOne />} />

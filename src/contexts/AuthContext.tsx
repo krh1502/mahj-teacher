@@ -46,11 +46,12 @@ export function AuthProvider({ children }: { children: ReactNode }) {
     loading,
     admin,
     async signIn(email, password) {
-      await signInWithEmailAndPassword(requireAuth(), email, password)
-      if (user?.email === "admin@example.com") {
-        setAdmin(true)
-      }
-      
+      await signInWithEmailAndPassword(requireAuth(), email, password).then((Credential) => {
+        if (Credential.user.email === "admin@example.com") {
+          console.log("Admin user detected. Setting admin state to true.");
+          setAdmin(true)
+        }
+      })
     },
     async signUp(name, email, password) {
       const credential = await createUserWithEmailAndPassword(requireAuth(), email, password)
