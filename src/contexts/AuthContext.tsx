@@ -14,6 +14,7 @@ import { auth, db, isFirebaseConfigured } from '@/lib/firebase'
 export interface AuthContextValue {
   user: User | null
   loading: boolean
+  admin: boolean
   signIn: (email: string, password: string) => Promise<void>
   signUp: (name: string, email: string, password: string) => Promise<void>
   signOut: () => Promise<void>
@@ -29,6 +30,7 @@ function requireAuth() {
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<User | null>(null)
+  const [admin, setAdmin] = useState<boolean>(false)
   const [loading, setLoading] = useState(isFirebaseConfigured)
 
   useEffect(() => {
@@ -42,8 +44,13 @@ export function AuthProvider({ children }: { children: ReactNode }) {
   const value: AuthContextValue = {
     user,
     loading,
+    admin,
     async signIn(email, password) {
       await signInWithEmailAndPassword(requireAuth(), email, password)
+      if (user?.email === "admin@example.com") {
+        setAdmin(true)
+      }
+      
     },
     async signUp(name, email, password) {
       const credential = await createUserWithEmailAndPassword(requireAuth(), email, password)

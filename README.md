@@ -18,7 +18,7 @@ src/
   contexts/     AuthContext (Firebase Auth state + sign in/up/out)
   hooks/        useAuth
   lib/          firebase.ts (app, auth, db initialization)
-  pages/        Route pages (Home, Login, Signup, Dashboard, Lessons, Practice)
+  pages/        Route pages (Home, Login, Signup, Lessons)
 vercel.json       SPA rewrites + security headers
 firebase.json     Firestore config (hosting is on Vercel)
 firestore.rules   Users can only read/write their own users/{uid} data
@@ -38,8 +38,8 @@ firestore.rules   Users can only read/write their own users/{uid} data
 ## Scripts
 
 ```bash
-pnpm install
-pnpm dev        # start the dev server
-pnpm build      # type-check and build to dist/
-pnpm deploy:rules  # publish Firestore rules/indexes (requires firebase-tools + `firebase login`)
+npm install
+npm dev        # start the dev server
+npm build      # type-check and build to dist/
+npm deploy:rules  # publish Firestore rules/indexes (requires firebase-tools + `firebase login`)
 ```

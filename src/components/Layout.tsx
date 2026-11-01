@@ -12,7 +12,7 @@ export default function Layout() {
         <Outlet />
       </main>
       <footer className="border-t border-border py-6 text-center text-sm text-muted">
-        [Footer placeholder]
+        Made with ❤️ by Kate Halushka
       </footer>
     </div>
   )

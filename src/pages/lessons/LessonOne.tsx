@@ -6,31 +6,31 @@ const tilePlaceholder = placeholderOne
 
 const lessonGroups = [
 	{
-		title: 'Group 1',
+		title: 'Number Tiles',
 		text: 'These are the number tiles. They go from 1-9. There are 4 of each number in each of the 3 suits in an American Mahjong tile set.',
 		imageCount: 9,
 		layout: 'grid-cols-3',
 	},
 	{
-		title: 'Group 2',
+		title: 'Winds',
 		text: 'There are the Winds. There is North, East, West, and South. In an American Mahjong set, there are 4 of each of the wind tiles.',
 		imageCount: 4,
 		layout: 'grid-cols-2',
 	},
 	{
-		title: 'Group 3',
+		title: 'Dragons',
 		text: 'These are the Dragons. There are 3 kinds of Dragons, Red Dragon, Green Dragon, and White Dragon, which is sometimes called the “Soap.” In an American Mahjong set, there are 4 of each Dragon tile.',
 		imageCount: 3,
 		layout: 'dragon',
 	},
 	{
-		title: 'Group 4',
+		title: 'Flowers',
 		text: 'These are Flower tiles. There are 8 of these in an American Mahjong set, and they are always distinct from each other. The distinction carries no meaning in the American game. Sometimes they also will be labeled with a season and/or a number, but this can be disregarded in American Mahjong. Each flower tile acts the same in American Mahjong.',
 		imageCount: 4,
 		layout: 'grid-cols-2',
 	},
 	{
-		title: 'Group 5',
+		title: 'Jokers',
 		text: 'Finally we have the Jokers. There are 8 of these in an American Mahjong set. Depending on the tile set, they may be identical or distinctive, but they all mean the same thing.',
 		imageCount: 1,
 		layout: 'grid-cols-1',
@@ -68,7 +68,7 @@ export default function LessonOne() {
 	return (
 		<LessonLayout
 			title="Lesson 1"
-			subtitle="Tile groups in an American Mahjong set"
+			subtitle="Types of Tiles"
 			leftContent={
 				<div className="space-y-5">
 					<div className="rounded-xl border border-border bg-background p-4">
