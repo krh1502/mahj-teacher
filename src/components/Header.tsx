@@ -2,12 +2,11 @@ import { Link, NavLink, useNavigate } from 'react-router-dom'
 import { useAuth } from '@/hooks/useAuth'
 
 const navLinkClass = ({ isActive }: { isActive: boolean }) =>
-  `rounded-md px-3 py-2 text-sm font-medium transition-colors ${
-    isActive ? 'bg-primary/10 text-primary' : 'text-muted hover:text-foreground'
+  `rounded-md px-3 py-2 text-sm font-medium transition-colors ${isActive ? 'bg-primary/10 text-primary' : 'text-muted hover:text-foreground'
   }`
 
 export default function Header() {
-  const { user, signOut } = useAuth()
+  const { user, admin, signOut } = useAuth()
   const navigate = useNavigate()
 
   async function handleSignOut() {
@@ -34,9 +33,13 @@ export default function Header() {
               <NavLink to="/lessons" className={navLinkClass}>
                 Lessons
               </NavLink>
-              <NavLink to="/practice" className={navLinkClass}>
-                Practice
-              </NavLink>
+              {admin ? (
+                <NavLink to="/admin" className={navLinkClass}>
+                  Admin
+                </NavLink>
+
+              ) : null}
+
               <button
                 type="button"
                 onClick={handleSignOut}
