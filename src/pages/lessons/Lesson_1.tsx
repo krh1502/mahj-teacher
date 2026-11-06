@@ -13,7 +13,7 @@ const lessonGroups = [
 	},
 	{
 		title: 'Winds',
-		text: 'There are the Winds. There is North, East, West, and South. In an American Mahjong set, there are 4 of each of the wind tiles.',
+		text: 'These are the Winds. There is North, East, West, and South. In an American Mahjong set, there are 4 of each of the wind tiles.',
 		imageCount: 4,
 		layout: 'grid-cols-2',
 	},
@@ -25,13 +25,13 @@ const lessonGroups = [
 	},
 	{
 		title: 'Flowers',
-		text: 'These are Flower tiles. There are 8 of these in an American Mahjong set, and they are always distinct from each other. The distinction carries no meaning in the American game. Sometimes they also will be labeled with a season and/or a number, but this can be disregarded in American Mahjong. Each flower tile acts the same in American Mahjong.',
+		text: 'These are Flower tiles. There are 8 flower tiles in an American Mahjong set, and they are always distinct from each other. The distinction carries no meaning in the American game. Sometimes they also will be labeled with a season and/or a number, but this can be disregarded in American Mahjong. Each flower tile acts the same in American Mahjong.',
 		imageCount: 4,
 		layout: 'grid-cols-2',
 	},
 	{
 		title: 'Jokers',
-		text: 'Finally we have the Jokers. There are 8 of these in an American Mahjong set. Depending on the tile set, they may be identical or distinctive, but they all mean the same thing.',
+		text: 'Finally we have the Jokers. There are 8 jokers in an American Mahjong set. Depending on the tile set, they may be identical or distinctive, but they all mean the same thing.',
 		imageCount: 1,
 		layout: 'grid-cols-1',
 	},

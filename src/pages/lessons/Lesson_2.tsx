@@ -5,6 +5,7 @@ import placeholderThree from '@/tile_images/tile-placeholder-3.svg'
 
 const tileImages = [placeholderOne, placeholderTwo, placeholderThree]
 
+
 export default function LessonTwo() {
   return (
     <LessonLayout
