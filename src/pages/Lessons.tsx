@@ -3,11 +3,11 @@ import PagePlaceholder from '@/components/PagePlaceholder'
 import { LESSONS } from '@/data/lessons'
 
 const lessonLinks = [
-  { id: '1', title: 'Lesson 1', description: 'Introduce the lesson structure and topic overview.' },
-  { id: '2', title: 'Lesson 2', description: 'Build on the core concept with examples and practice.' },
-  { id: '3', title: 'Lesson 3', description: 'Reinforce the material with a guided activity.' },
-  { id: '4', title: 'Lesson 4', description: 'Scaffold for additional lesson content.' },
-  { id: '5', title: 'Lesson 5', description: 'Scaffold for additional lesson content.' },
+  { id: '1', title: 'Lesson 1', description: 'Learn the 5 types of Mahjong tiles.' },
+  { id: '2', title: 'Lesson 2', description: 'Learn the 3 suits of Mahjong tiles.' },
+  { id: '3', title: 'Lesson 3', description: 'Learn how to group Mahjong tiles.' },
+  { id: '4', title: 'Lesson 4', description: 'Learn about the NJML card.' },
+  { id: '5', title: 'Lesson 5', description: 'Learn how to compose your first Mahjong hand with your new skills.' },
 ]
 
 export default function Lessons() {
