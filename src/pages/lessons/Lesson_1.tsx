@@ -9,31 +9,50 @@ import placeholderThree from '@/tile_images/tile-placeholder-3.svg'
 const lessonGroups = [
 	{
 		title: 'Number Tiles',
-		text: 'These are the number tiles. They go from 1-9. There are 4 of each number in each of the 3 suits in an American Mahjong tile set.',
+		text: ( 
+			<>
+			These are the <strong>number tiles</strong>. They go from 1-9. There are 4 of each number in each of the 3 suits in an American Mahjong tile set.
+			</>
+		),
 		imageCount: 9,
 		layout: 'grid-cols-3',
 	},
 	{
 		title: 'Winds',
-		text: 'These are the Winds. There is North, East, West, and South. In an American Mahjong set, there are 4 of each of the wind tiles.',
+		text: (
+			<>
+			These are the <strong>Winds</strong>. There is North, East, West, and South. In an American Mahjong set, there are 4 of each of the wind tiles.
+			</>
+		),
 		imageCount: 4,
 		layout: 'grid-cols-2',
 	},
 	{
 		title: 'Dragons',
-		text: 'These are the Dragons. There are 3 kinds of Dragons, Red Dragon, Green Dragon, and White Dragon, which is sometimes called the “Soap.” In an American Mahjong set, there are 4 of each Dragon tile.',
+		text: (
+			<>
+			These are the <strong>Dragons</strong>. There are 3 kinds of Dragons, <strong>Red Dragon</strong>, <strong>Green Dragon</strong>, and <strong>White Dragon</strong>, which is sometimes called the “Soap.” In an American Mahjong set, there are 4 of each Dragon tile.
+			</>
+		),
 		imageCount: 3,
 		layout: 'dragon',
 	},
 	{
 		title: 'Flowers',
-		text: 'These are Flower tiles. There are 8 flower tiles in an American Mahjong set, and they are always distinct from each other. The distinction carries no meaning in the American game. Sometimes they also will be labeled with a season and/or a number, but this can be disregarded in American Mahjong. Each flower tile acts the same in American Mahjong.',
+		text: (
+			<>
+			These are <strong>Flower tiles</strong>. There are 8 flower tiles in an American Mahjong set, and they are always distinct from each other. The distinction carries no meaning in the American game. Sometimes they also will be labeled with a season and/or a number, but this can be disregarded in American Mahjong. Each flower tile acts the same in American Mahjong.
+			</>
+		),
 		imageCount: 4,
 		layout: 'grid-cols-2',
 	},
 	{
 		title: 'Jokers',
-		text: 'Finally we have the Jokers. There are 8 jokers in an American Mahjong set. Depending on the tile set, they may be identical or distinctive, but they all mean the same thing.',
+		text: (
+			<>
+			Finally we have the <strong>Jokers</strong>. There are 8 jokers in an American Mahjong set. Depending on the tile set, they may be identical or distinctive, but they all mean the same thing.
+			</>),
 		imageCount: 1,
 		layout: 'grid-cols-1',
 	},
@@ -231,38 +250,46 @@ export default function LessonOne() {
 							</p>
 						</div>
 
-						<div className="flex items-center justify-between gap-3">
-							<button
-								type="button"
-								onClick={handlePrevious}
-								disabled={isFirstGroup}
-								className="inline-flex items-center gap-2 rounded-md border border-border bg-surface px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-background disabled:cursor-not-allowed disabled:opacity-50"
-								aria-label="Move to the previous group"
-							>
-								<span aria-hidden="true">←</span>
-								<span>Previous</span>
-							</button>
+						<div className="grid grid-cols-[1fr_auto_1fr] items-center gap-3">
+							<div className="flex justify-start">
+								{!isFirstGroup && (
+									<button
+										type="button"
+										onClick={handlePrevious}
+										disabled={isFirstGroup}
+										className="inline-flex items-center gap-2 rounded-md border border-border bg-surface px-4 py-2 text-sm font-medium text-foreground transition-colors hover:bg-background disabled:cursor-not-allowed disabled:opacity-50"
+										aria-label="Move to the previous group"
+									>
+										<span aria-hidden="true">←</span>
+										<span>Previous</span>
+									</button>
+								)}
+							</div>
 
-							<div className="text-sm font-medium text-muted">
+							<div className="justify-self-center text-sm font-medium text-muted">
 								{currentGroupIndex + 1} / {lessonGroups.length}
 							</div>
 
-							<button
-								type="button"
-								onClick={handleNext}
-								disabled={isLastGroup && showActivity}
-								className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:bg-primary/40"
-								aria-label={isLessonContentComplete ? 'Start the knowledge check activity' : 'Move to the next group'}
-							>
-								{isLessonContentComplete ? (
-									<span>Next</span>
-								) : (
-									<>
-										<span>Next</span>
-										<span aria-hidden="true">→</span>
-									</>
+							<div className="flex justify-end">
+								{!isLastGroup && (
+									<button
+										type="button"
+										onClick={handleNext}
+										disabled={isLastGroup && showActivity}
+										className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:bg-primary/40"
+										aria-label={isLessonContentComplete ? 'Start the knowledge check activity' : 'Move to the next group'}
+									>
+										{isLessonContentComplete ? (
+											<span>Next</span>
+										) : (
+											<>
+												<span>Next</span>
+												<span aria-hidden="true">→</span>
+											</>
+										)}
+									</button>
 								)}
-							</button>
+							</div>
 						</div>
 					</div>
 				}
