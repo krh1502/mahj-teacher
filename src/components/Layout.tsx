@@ -8,7 +8,7 @@ export default function Layout() {
     <div className="flex min-h-dvh flex-col">
       <Header />
       {!isFirebaseConfigured && <SetupNotice />}
-      <main className="mx-auto w-full max-w-5xl flex-1 px-4 py-10 sm:px-6">
+      <main className="mx-auto w-full max-w-7xl flex-1 px-4 py-10 sm:px-6">
         <Outlet />
       </main>
       <footer className="border-t border-border py-6 text-center text-sm text-muted">
