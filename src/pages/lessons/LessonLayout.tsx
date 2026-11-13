@@ -4,7 +4,7 @@ interface LessonLayoutProps {
   title: string
   subtitle?: string
   leftContent: ReactNode
-  rightContent: ReactNode
+  rightContent?: ReactNode
 }
 
 export default function LessonLayout({ title, subtitle, leftContent, rightContent }: LessonLayoutProps) {
@@ -16,9 +16,11 @@ export default function LessonLayout({ title, subtitle, leftContent, rightConten
         {subtitle ? <p className="mt-2 text-muted">{subtitle}</p> : null}
       </header>
 
-      <div className="grid gap-6 lg:grid-cols-[1.2fr_0.8fr]">
+      <div className={rightContent ? 'grid gap-6 lg:grid-cols-[1.2fr_0.8fr]' : 'flex flex-col gap-6'}>
         <div className="rounded-2xl border border-border bg-surface p-6 shadow-sm">{leftContent}</div>
-        <aside className="rounded-2xl border border-border bg-surface p-6 shadow-sm">{rightContent}</aside>
+        {rightContent ? (
+          <aside className="rounded-2xl border border-border bg-surface p-6 shadow-sm">{rightContent}</aside>
+        ) : null}
       </div>
     </section>
   )
