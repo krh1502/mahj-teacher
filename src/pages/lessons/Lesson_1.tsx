@@ -3,8 +3,17 @@ import { useNavigate } from 'react-router-dom'
 import LessonLayout from '@/pages/lessons/LessonLayout'
 import tablePlaceholder from '@/tile_images/table-placeholder.svg'
 import placeholderOne from '@/tile_images/tile-placeholder-1.svg'
-import placeholderTwo from '@/tile_images/tile-placeholder-2.svg'
-import placeholderThree from '@/tile_images/tile-placeholder-3.svg'
+import OneBam from '@/tile_images/1-bam.jpg'
+import NineDot from '@/tile_images/9-dot.jpg'
+import FourCrak from '@/tile_images/4-crak.jpg'
+import Soap from '@/tile_images/soap.jpg'
+import RedDragon from '@/tile_images/red.jpg'
+import GreenDragon from '@/tile_images/green.jpg'
+import Flower from '@/tile_images/flower-1.jpg'
+import EastWind from '@/tile_images/east.jpg'
+import NorthWind from '@/tile_images/north.jpg'
+import Joker from '@/tile_images/joker.jpg'
+
 
 const lessonGroups = [
 	{
@@ -67,16 +76,16 @@ const activityCategories = [
 ] as const
 
 const activityTiles = [
-	{ id: '1-bam', name: '1 Bam', category: 'number', image: placeholderOne },
-	{ id: '4-crak', name: '4 Crak', category: 'number', image: placeholderTwo },
-	{ id: '9-dot', name: '9 Dot', category: 'number', image: placeholderThree },
-	{ id: 'soap', name: 'Soap', category: 'dragon', image: placeholderOne },
-	{ id: 'red-dragon', name: 'Red Dragon', category: 'dragon', image: placeholderTwo },
-	{ id: 'green-dragon', name: 'Green Dragon', category: 'dragon', image: placeholderThree },
-	{ id: 'flower', name: 'Flower', category: 'flower', image: placeholderOne },
-	{ id: 'east-wind', name: 'East Wind', category: 'wind', image: placeholderTwo },
-	{ id: 'north-wind', name: 'North Wind', category: 'wind', image: placeholderThree },
-	{ id: 'joker', name: 'Joker', category: 'joker', image: placeholderOne },
+	{ id: '1-bam', name: '1 Bam', category: 'number', image: OneBam },
+	{ id: '4-crak', name: '4 Crak', category: 'number', image: FourCrak },
+	{ id: '9-dot', name: '9 Dot', category: 'number', image: NineDot },
+	{ id: 'soap', name: 'Soap', category: 'dragon', image: Soap },
+	{ id: 'red-dragon', name: 'Red Dragon', category: 'dragon', image: RedDragon },
+	{ id: 'green-dragon', name: 'Green Dragon', category: 'dragon', image: GreenDragon },
+	{ id: 'flower', name: 'Flower', category: 'flower', image: Flower },
+	{ id: 'east-wind', name: 'East Wind', category: 'wind', image: EastWind },
+	{ id: 'north-wind', name: 'North Wind', category: 'wind', image: NorthWind },
+	{ id: 'joker', name: 'Joker', category: 'joker', image: Joker },
 ] as const
 
 const categoryLabelMap: Record<string, string> = {
@@ -385,11 +394,8 @@ export default function LessonOne() {
 											<img
 												src={tile.image}
 												alt={tile.name}
-												className="h-20 w-full rounded-md object-cover"
+												className="h-20 w-full rounded-md object-contain"
 											/>
-											<div className="mt-2 text-[10px] font-medium text-white/95">
-												{tile.name}
-											</div>
 										</div>
 									))}
 								</div>
@@ -415,16 +421,13 @@ export default function LessonOne() {
 												{placedTilesByCategory[category.id]?.map((tile) => (
 													<div
 														key={tile.id}
-														className="w-[110px] rounded-md border border-white/40 bg-white/10 p-2"
+														className="rounded-md border border-white/40 bg-white/10 p-2"
 													>
 														<img
 															src={tile.image}
 															alt={tile.name}
-															className="mx-auto h-14 w-full rounded-md object-cover"
+															className="mx-auto h-14 w-full rounded-md object-contain"
 														/>
-														<div className="mt-1 text-[9px] font-medium text-white/95">
-															{tile.name}
-														</div>
 													</div>
 												))}
 											</div>

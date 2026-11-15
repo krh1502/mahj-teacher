@@ -6,7 +6,7 @@ const lessonLinks = [
   { id: '1', title: 'Lesson 1', description: 'Learn the 5 types of Mahjong tiles.' },
   { id: '2', title: 'Lesson 2', description: 'Learn the 3 suits of Mahjong tiles.' },
   { id: '3', title: 'Lesson 3', description: 'Learn how to group Mahjong tiles.' },
-  { id: '4', title: 'Lesson 4', description: 'Learn about the NJML card.' },
+  { id: '4', title: 'Lesson 4', description: 'Learn about the NMJL card.' },
   { id: '5', title: 'Lesson 5', description: 'Learn how to compose your first Mahjong hand with your new skills.' },
 ]
 
