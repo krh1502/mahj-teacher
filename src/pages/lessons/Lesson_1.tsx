@@ -4,8 +4,16 @@ import LessonLayout from '@/pages/lessons/LessonLayout'
 import tablePlaceholder from '@/tile_images/table-placeholder.svg'
 import placeholderOne from '@/tile_images/tile-placeholder-1.svg'
 import OneBam from '@/tile_images/1-bam.jpg'
-import NineDot from '@/tile_images/9-dot.jpg'
+import TwoBam from '@/tile_images/2-bam.jpg'
+import ThreeBam from '@/tile_images/3-bam.jpg'
+import FourBam from '@/tile_images/4-bam.jpg'
+import FiveBam from '@/tile_images/5-bam.jpg'
+import SixBam from '@/tile_images/6-bam.jpg'
+import SevenBam from '@/tile_images/7-bam.jpg'
+import EightBam from '@/tile_images/8-bam.jpg'
+import NineBam from '@/tile_images/9-bam.jpg'
 import FourCrak from '@/tile_images/4-crak.jpg'
+import NineDot from '@/tile_images/9-dot.jpg'
 import Soap from '@/tile_images/soap.jpg'
 import RedDragon from '@/tile_images/red.jpg'
 import GreenDragon from '@/tile_images/green.jpg'
@@ -25,6 +33,17 @@ const lessonGroups = [
 		),
 		imageCount: 9,
 		layout: 'grid-cols-3',
+		images: [
+			OneBam,
+			TwoBam,
+			ThreeBam,
+			FourBam,
+			FiveBam,
+			SixBam,
+			SevenBam,
+			EightBam,
+			NineBam,
+		],
 	},
 	{
 		title: 'Winds',
@@ -141,9 +160,9 @@ export default function LessonOne() {
 		() =>
 			Array.from({ length: currentGroup.imageCount }, (_, index) => ({
 				id: `${currentGroup.title}-${index + 1}`,
-				src: placeholderOne,
+				src: 'images' in currentGroup ? currentGroup.images[index] ?? placeholderOne : placeholderOne,
 			})),
-		[currentGroup.imageCount, currentGroup.title]
+		[currentGroup]
 	)
 
 	const shuffledAvailableTiles = useMemo(
@@ -315,7 +334,7 @@ export default function LessonOne() {
 											<img
 												src={tile.src}
 												alt={tile.id}
-												className="h-24 w-full rounded-md object-cover"
+												className="h-24 w-full rounded-md object-contain"
 											/>
 										</div>
 									))}
@@ -325,7 +344,7 @@ export default function LessonOne() {
 										<img
 											src={tileImages[2].src}
 											alt={tileImages[2].id}
-											className="h-24 w-full rounded-md object-cover"
+											className="h-24 w-full rounded-md object-contain"
 										/>
 									</div>
 								</div>
@@ -340,7 +359,7 @@ export default function LessonOne() {
 										<img
 											src={tile.src}
 											alt={tile.id}
-											className="h-24 w-full rounded-md object-cover"
+											className="h-24 w-full rounded-md object-contain"
 										/>
 									</div>
 								))}
@@ -389,12 +408,12 @@ export default function LessonOne() {
 											key={tile.id}
 											draggable
 											onDragStart={() => handleTileDragStart(tile.id)}
-											className="cursor-grab rounded-xl border border-white/40 bg-white/10 p-2 text-center shadow-sm active:cursor-grabbing"
+											className="mx-auto w-fit cursor-grab rounded-xl border border-white/40 bg-white/10 p-1 text-center shadow-sm active:cursor-grabbing"
 										>
 											<img
 												src={tile.image}
 												alt={tile.name}
-												className="h-20 w-full rounded-md object-contain"
+												className="h-20 w-16 rounded-md object-contain"
 											/>
 										</div>
 									))}
@@ -421,12 +440,12 @@ export default function LessonOne() {
 												{placedTilesByCategory[category.id]?.map((tile) => (
 													<div
 														key={tile.id}
-														className="rounded-md border border-white/40 bg-white/10 p-2"
+														className="w-fit rounded-md border border-white/40 bg-white/10 p-1"
 													>
 														<img
 															src={tile.image}
 															alt={tile.name}
-															className="mx-auto h-14 w-full rounded-md object-contain"
+															className="mx-auto h-14 w-12 rounded-md object-contain"
 														/>
 													</div>
 												))}
