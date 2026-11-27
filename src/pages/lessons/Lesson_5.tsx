@@ -14,6 +14,13 @@ import FourCrak from '@/tile_images/4-crak.jpg'
 import FiveCrak from '@/tile_images/5-crak.jpg'
 import SixCrak from '@/tile_images/6-crak.jpg'
 import SevenCrak from '@/tile_images/7-crak.jpg'
+import TwoBam from '@/tile_images/2-bam.jpg'
+import EightBam from '@/tile_images/8-bam.jpg'
+import EightDot from '@/tile_images/8-dot.jpg'
+import TwoCrak from '@/tile_images/2-crak.jpg'
+import GreenDragon from '@/tile_images/green.jpg'
+import RedDragon from '@/tile_images/red.jpg'
+import Soap from '@/tile_images/soap.jpg'
 
 /**
  * Represents a collection of lesson groups for a Mahjong teaching application.
@@ -82,8 +89,21 @@ const lessonGroups = [
 		),
 	},
 	{
-		title: 'Group 2',
-		text: 'Add your lesson content here.',
+		title: '2468 Hands',
+		text: (
+			<>
+				That line was all tiles in the same suit. Let&apos;s try a more complicated hand this time, so you can see how the different colors on the card indicate the suits.
+				<br />
+				<br />
+				From the 2468 section, find this line:
+				<br />
+				<br />
+				<span className="text-lg font-bold text-[#74c476]">2222 DDD</span><span className="text-lg font-bold text-[#de0a26]"> 8888 DDD</span>
+				<br />
+				<br />
+				For this line, the 2s and first 3 dragons must all be of one suit, and the 8s and last 3 dragons must be of a different suit. Click to see examples of this hand.
+			</>
+		),
 	},
 	{
 		title: 'Group 3',
@@ -125,6 +145,40 @@ const exampleTwo = [
 	SevenCrak,
 ]
 
+const exampleThree = [
+	TwoBam,
+	TwoBam,
+	TwoBam,
+	TwoBam,
+	GreenDragon,
+	GreenDragon,
+	GreenDragon,
+	EightDot,
+	EightDot,
+	EightDot,
+	EightDot,
+	Soap,
+	Soap,
+	Soap,
+]
+
+const exampleFour = [
+	TwoCrak,
+	TwoCrak,
+	TwoCrak,
+	TwoCrak,
+	RedDragon,
+	RedDragon,
+	RedDragon,
+	EightBam,
+	EightBam,
+	EightBam,
+	EightBam,
+	GreenDragon,
+	GreenDragon,
+	GreenDragon,
+]
+
 const emptyExample = Array.from({ length: 14 }, () => placeholderOne)
 
 function TileExample({ title, tiles }: { title: string; tiles: string[] }) {
@@ -154,6 +208,7 @@ function TileExample({ title, tiles }: { title: string; tiles: string[] }) {
 export default function LessonFive() {
 	const [currentGroupIndex, setCurrentGroupIndex] = useState(0)
 	const [showExample, setShowExample] = useState(false)
+	const [exampleViewed, setExampleViewed] = useState(false)
 	const currentGroup = lessonGroups[currentGroupIndex]
 	const isFirstGroup = currentGroupIndex === 0
 	const isLastGroup = currentGroupIndex === lessonGroups.length - 1
@@ -162,13 +217,15 @@ export default function LessonFive() {
 		if (!isFirstGroup) {
 			setCurrentGroupIndex((previous) => previous - 1)
 			setShowExample(false)
+			setExampleViewed(false)
 		}
 	}
 
 	function handleNext() {
-		if (!isLastGroup) {
+		if (!isLastGroup && exampleViewed) {
 			setCurrentGroupIndex((previous) => previous + 1)
 			setShowExample(false)
+			setExampleViewed(false)
 		}
 	}
 
@@ -188,7 +245,10 @@ export default function LessonFive() {
 
 						<button
 							type="button"
-							onClick={() => setShowExample((visible) => !visible)}
+							onClick={() => {
+								if (!showExample) setExampleViewed(true)
+								setShowExample((visible) => !visible)
+							}}
 							className="mt-5 inline-flex items-center rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-hover"
 						>
 							{showExample ? 'Hide Example' : 'Show Example'}
@@ -201,6 +261,11 @@ export default function LessonFive() {
 								<>
 									<TileExample title="Example 1" tiles={exampleOne} />
 									<TileExample title="Example 2" tiles={exampleTwo} />
+								</>
+							) : currentGroupIndex === 1 ? (
+								<>
+									<TileExample title="Example 1" tiles={exampleThree} />
+									<TileExample title="Example 2" tiles={exampleFour} />
 								</>
 							) : (
 								<TileExample title="Example" tiles={emptyExample} />
@@ -232,7 +297,8 @@ export default function LessonFive() {
 								<button
 									type="button"
 									onClick={handleNext}
-									className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-hover"
+									disabled={!exampleViewed}
+									className="inline-flex items-center gap-2 rounded-md bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary-hover disabled:cursor-not-allowed disabled:opacity-50"
 									aria-label="Move to the next group"
 								>
 									<span>Next</span>
