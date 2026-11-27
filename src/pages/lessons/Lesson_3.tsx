@@ -1,11 +1,58 @@
 import { useEffect, useMemo, useState, type ReactNode } from 'react'
 import { useNavigate } from 'react-router-dom'
 import LessonLayout from '@/pages/lessons/LessonLayout'
-import placeholderOne from '@/tile_images/tile-placeholder-1.svg'
-import placeholderTwo from '@/tile_images/tile-placeholder-2.svg'
-import placeholderThree from '@/tile_images/tile-placeholder-3.svg'
+import NorthWind from '@/tile_images/north.jpg'
+import SixBam from '@/tile_images/6-bam.jpg'
+import FlowerOne from '@/tile_images/flower-1.jpg'
+import FlowerTwo from '@/tile_images/flower-2.jpg'
+import FlowerThree from '@/tile_images/flower-3.png'
+import FlowerFour from '@/tile_images/flower-4.png'
+import EightDot from '@/tile_images/8-dot.jpg'
+import ThreeCrak from '@/tile_images/3-crak.jpg'
+import Joker from '@/tile_images/joker.jpg'
+import GreenDragon from '@/tile_images/green.jpg'
+import SevenDot from '@/tile_images/7-dot.jpg'
+import WestWind from '@/tile_images/west.jpg'
+import FourCrak from '@/tile_images/4-crak.jpg'
+import FourBam from '@/tile_images/4-bam.jpg'
+import OneDot from '@/tile_images/1-dot.jpg'
+import TwoDot from '@/tile_images/2-dot.jpg'
+import ThreeDot from '@/tile_images/3-dot.jpg'
+import SixCrak from '@/tile_images/6-crak.jpg'
+import SevenCrak from '@/tile_images/7-crak.jpg'
+import EightCrak from '@/tile_images/8-crak.jpg'
+import NineCrak from '@/tile_images/9-crak.jpg'
+import ThreeBam from '@/tile_images/3-bam.jpg'
+import FiveBam from '@/tile_images/5-bam.jpg'
+import SevenBam from '@/tile_images/7-bam.jpg'
+import BirdBam from '@/tile_images/1-bam.jpg'
 
-const tileImages = [placeholderOne, placeholderTwo, placeholderThree]
+const tileImages = [
+  NorthWind,
+  SixBam,
+  FlowerOne,
+  FlowerTwo,
+  FlowerThree,
+  FlowerFour,
+  EightDot,
+  ThreeCrak,
+  Joker,
+  GreenDragon,
+  SevenDot,
+  WestWind,
+  FourCrak,
+  FourBam,
+  OneDot,
+  TwoDot,
+  ThreeDot,
+  SixCrak,
+  SevenCrak,
+  EightCrak,
+  NineCrak,
+  ThreeBam,
+  FiveBam,
+  SevenBam,
+]
 
 type Section = {
   id: string
@@ -16,6 +63,7 @@ type Section = {
 type TileDefinition = {
   id: string
   name: string
+  image?: string
   matchKey?: string
   suit?: 'dot' | 'crak' | 'bam'
   value?: number
@@ -55,27 +103,27 @@ const roundDefinitions: RoundDefinition[] = [
       { id: 'sextet', label: 'Sextet', count: 6 },
     ],
     tiles: [
-      { id: 'r1-bird-bam', name: 'Bird Bam', matchKey: 'bird-bam', isJoker: false },
-      { id: 'r1-north-wind-1', name: 'North Wind', matchKey: 'north-wind', isJoker: false },
-      { id: 'r1-north-wind-2', name: 'North Wind', matchKey: 'north-wind', isJoker: false },
-      { id: 'r1-6-bam-1', name: '6 Bam', matchKey: '6-bam', isJoker: false },
-      { id: 'r1-6-bam-2', name: '6 Bam', matchKey: '6-bam', isJoker: false },
-      { id: 'r1-6-bam-3', name: '6 Bam', matchKey: '6-bam', isJoker: false },
-      { id: 'r1-flower-1', name: 'Flower', matchKey: 'flower', isJoker: false },
-      { id: 'r1-flower-2', name: 'Flower', matchKey: 'flower', isJoker: false },
-      { id: 'r1-flower-3', name: 'Flower', matchKey: 'flower', isJoker: false },
-      { id: 'r1-flower-4', name: 'Flower', matchKey: 'flower', isJoker: false },
-      { id: 'r1-8-dot-1', name: '8 Dot', matchKey: '8-dot', isJoker: false },
-      { id: 'r1-8-dot-2', name: '8 Dot', matchKey: '8-dot', isJoker: false },
-      { id: 'r1-8-dot-3', name: '8 Dot', matchKey: '8-dot', isJoker: false },
-      { id: 'r1-8-dot-4', name: '8 Dot', matchKey: '8-dot', isJoker: false },
-      { id: 'r1-3-crak-1', name: '3 Crak', matchKey: '3-crak', isJoker: false },
-      { id: 'r1-3-crak-2', name: '3 Crak', matchKey: '3-crak', isJoker: false },
-      { id: 'r1-3-crak-3', name: '3 Crak', matchKey: '3-crak', isJoker: false },
-      { id: 'r1-3-crak-4', name: '3 Crak', matchKey: '3-crak', isJoker: false },
-      { id: 'r1-joker-1', name: 'Joker', matchKey: 'joker', isJoker: true },
-      { id: 'r1-joker-2', name: 'Joker', matchKey: 'joker', isJoker: true },
-      { id: 'r1-joker-3', name: 'Joker', matchKey: 'joker', isJoker: true },
+      { id: 'r1-bird-bam', name: 'Bird Bam', image: BirdBam, matchKey: 'bird-bam', isJoker: false },
+      { id: 'r1-north-wind-1', name: 'North Wind', image: NorthWind, matchKey: 'north-wind', isJoker: false },
+      { id: 'r1-north-wind-2', name: 'North Wind', image: NorthWind, matchKey: 'north-wind', isJoker: false },
+      { id: 'r1-6-bam-1', name: '6 Bam', image: SixBam, matchKey: '6-bam', isJoker: false },
+      { id: 'r1-6-bam-2', name: '6 Bam', image: SixBam, matchKey: '6-bam', isJoker: false },
+      { id: 'r1-6-bam-3', name: '6 Bam', image: SixBam, matchKey: '6-bam', isJoker: false },
+      { id: 'r1-flower-1', name: 'Flower', image: FlowerOne, matchKey: 'flower', isJoker: false },
+      { id: 'r1-flower-2', name: 'Flower', image: FlowerTwo, matchKey: 'flower', isJoker: false },
+      { id: 'r1-flower-3', name: 'Flower', image: FlowerThree, matchKey: 'flower', isJoker: false },
+      { id: 'r1-flower-4', name: 'Flower', image: FlowerFour, matchKey: 'flower', isJoker: false },
+      { id: 'r1-8-dot-1', name: '8 Dot', image: EightDot, matchKey: '8-dot', isJoker: false },
+      { id: 'r1-8-dot-2', name: '8 Dot', image: EightDot, matchKey: '8-dot', isJoker: false },
+      { id: 'r1-8-dot-3', name: '8 Dot', image: EightDot, matchKey: '8-dot', isJoker: false },
+      { id: 'r1-8-dot-4', name: '8 Dot', image: EightDot, matchKey: '8-dot', isJoker: false },
+      { id: 'r1-3-crak-1', name: '3 Crak', image: ThreeCrak, matchKey: '3-crak', isJoker: false },
+      { id: 'r1-3-crak-2', name: '3 Crak', image: ThreeCrak, matchKey: '3-crak', isJoker: false },
+      { id: 'r1-3-crak-3', name: '3 Crak', image: ThreeCrak, matchKey: '3-crak', isJoker: false },
+      { id: 'r1-3-crak-4', name: '3 Crak', image: ThreeCrak, matchKey: '3-crak', isJoker: false },
+      { id: 'r1-joker-1', name: 'Joker', image: Joker, matchKey: 'joker', isJoker: true },
+      { id: 'r1-joker-2', name: 'Joker', image: Joker, matchKey: 'joker', isJoker: true },
+      { id: 'r1-joker-3', name: 'Joker', image: Joker, matchKey: 'joker', isJoker: true },
     ],
     successMessage: 'Nice job! Next challenge →',
     wrongCountMessage: 'Good try. Check the definitions of Pung and Kong again and count how many tiles are in each meld',
@@ -106,27 +154,27 @@ const roundDefinitions: RoundDefinition[] = [
       { id: 'sextet', label: 'Sextet', count: 6 },
     ],
     tiles: [
-      { id: 'r2-green-dragon', name: 'Green Dragon', matchKey: 'green-dragon', isJoker: false },
-      { id: 'r2-7-dot-1', name: '7 Dot', matchKey: '7-dot', isJoker: false },
-      { id: 'r2-7-dot-2', name: '7 Dot', matchKey: '7-dot', isJoker: false },
-      { id: 'r2-west-wind-1', name: 'West Wind', matchKey: 'west-wind', isJoker: false },
-      { id: 'r2-west-wind-2', name: 'West Wind', matchKey: 'west-wind', isJoker: false },
-      { id: 'r2-west-wind-3', name: 'West Wind', matchKey: 'west-wind', isJoker: false },
-      { id: 'r2-4-crak-1', name: '4 Crak', matchKey: '4-crak', isJoker: false },
-      { id: 'r2-4-crak-2', name: '4 Crak', matchKey: '4-crak', isJoker: false },
-      { id: 'r2-4-crak-3', name: '4 Crak', matchKey: '4-crak', isJoker: false },
-      { id: 'r2-4-crak-4', name: '4 Crak', matchKey: '4-crak', isJoker: false },
-      { id: 'r2-4-bam-1', name: '4 Bam', matchKey: '4-bam', isJoker: false },
-      { id: 'r2-4-bam-2', name: '4 Bam', matchKey: '4-bam', isJoker: false },
-      { id: 'r2-4-bam-3', name: '4 Bam', matchKey: '4-bam', isJoker: false },
-      { id: 'r2-4-bam-4', name: '4 Bam', matchKey: '4-bam', isJoker: false },
-      { id: 'r2-flower-1', name: 'Flower', matchKey: 'flower', isJoker: false },
-      { id: 'r2-flower-2', name: 'Flower', matchKey: 'flower', isJoker: false },
-      { id: 'r2-flower-3', name: 'Flower', matchKey: 'flower', isJoker: false },
-      { id: 'r2-flower-4', name: 'Flower', matchKey: 'flower', isJoker: false },
-      { id: 'r2-flower-5', name: 'Flower', matchKey: 'flower', isJoker: false },
-      { id: 'r2-flower-6', name: 'Flower', matchKey: 'flower', isJoker: false },
-      { id: 'r2-joker', name: 'Joker', matchKey: 'joker', isJoker: true },
+      { id: 'r2-green-dragon', name: 'Green Dragon', image: GreenDragon, matchKey: 'green-dragon', isJoker: false },
+      { id: 'r2-7-dot-1', name: '7 Dot', image: SevenDot, matchKey: '7-dot', isJoker: false },
+      { id: 'r2-7-dot-2', name: '7 Dot', image: SevenDot, matchKey: '7-dot', isJoker: false },
+      { id: 'r2-west-wind-1', name: 'West Wind', image: WestWind, matchKey: 'west-wind', isJoker: false },
+      { id: 'r2-west-wind-2', name: 'West Wind', image: WestWind, matchKey: 'west-wind', isJoker: false },
+      { id: 'r2-west-wind-3', name: 'West Wind', image: WestWind, matchKey: 'west-wind', isJoker: false },
+      { id: 'r2-4-crak-1', name: '4 Crak', image: FourCrak, matchKey: '4-crak', isJoker: false },
+      { id: 'r2-4-crak-2', name: '4 Crak', image: FourCrak, matchKey: '4-crak', isJoker: false },
+      { id: 'r2-4-crak-3', name: '4 Crak', image: FourCrak, matchKey: '4-crak', isJoker: false },
+      { id: 'r2-4-crak-4', name: '4 Crak', image: FourCrak, matchKey: '4-crak', isJoker: false },
+      { id: 'r2-4-bam-1', name: '4 Bam', image: FourBam, matchKey: '4-bam', isJoker: false },
+      { id: 'r2-4-bam-2', name: '4 Bam', image: FourBam, matchKey: '4-bam', isJoker: false },
+      { id: 'r2-4-bam-3', name: '4 Bam', image: FourBam, matchKey: '4-bam', isJoker: false },
+      { id: 'r2-4-bam-4', name: '4 Bam', image: FourBam, matchKey: '4-bam', isJoker: false },
+      { id: 'r2-flower-1', name: 'Flower', image: FlowerOne, matchKey: 'flower', isJoker: false },
+      { id: 'r2-flower-2', name: 'Flower', image: FlowerTwo, matchKey: 'flower', isJoker: false },
+      { id: 'r2-flower-3', name: 'Flower', image: FlowerThree, matchKey: 'flower', isJoker: false },
+      { id: 'r2-flower-4', name: 'Flower', image: FlowerFour, matchKey: 'flower', isJoker: false },
+      { id: 'r2-flower-5', name: 'Flower', image: FlowerOne, matchKey: 'flower', isJoker: false },
+      { id: 'r2-flower-6', name: 'Flower', image: FlowerTwo, matchKey: 'flower', isJoker: false },
+      { id: 'r2-joker', name: 'Joker', image: Joker, matchKey: 'joker', isJoker: true },
     ],
     successMessage: 'Nice job! Next challenge →',
     wrongCountMessage: 'Good try. Check the definitions of Pung and Kong again and count how many tiles are in each meld',
@@ -154,18 +202,18 @@ const roundDefinitions: RoundDefinition[] = [
       { id: 'run-5', label: 'Run of 5', count: 5 },
     ],
     tiles: [
-      { id: 'r3-1-dot', name: '1 Dot', suit: 'dot', value: 1 },
-      { id: 'r3-2-dot', name: '2 Dot', suit: 'dot', value: 2 },
-      { id: 'r3-3-dot', name: '3 Dot', suit: 'dot', value: 3 },
-      { id: 'r3-6-crak', name: '6 Crak', suit: 'crak', value: 6 },
-      { id: 'r3-7-crak', name: '7 Crak', suit: 'crak', value: 7 },
-      { id: 'r3-8-crak', name: '8 Crak', suit: 'crak', value: 8 },
-      { id: 'r3-9-crak', name: '9 Crak', suit: 'crak', value: 9 },
-      { id: 'r3-3-bam', name: '3 Bam', suit: 'bam', value: 3 },
-      { id: 'r3-4-bam', name: '4 Bam', suit: 'bam', value: 4 },
-      { id: 'r3-5-bam', name: '5 Bam', suit: 'bam', value: 5 },
-      { id: 'r3-6-bam', name: '6 Bam', suit: 'bam', value: 6 },
-      { id: 'r3-7-bam', name: '7 Bam', suit: 'bam', value: 7 },
+      { id: 'r3-1-dot', name: '1 Dot', image: OneDot, suit: 'dot', value: 1 },
+      { id: 'r3-2-dot', name: '2 Dot', image: TwoDot, suit: 'dot', value: 2 },
+      { id: 'r3-3-dot', name: '3 Dot', image: ThreeDot, suit: 'dot', value: 3 },
+      { id: 'r3-6-crak', name: '6 Crak', image: SixCrak, suit: 'crak', value: 6 },
+      { id: 'r3-7-crak', name: '7 Crak', image: SevenCrak, suit: 'crak', value: 7 },
+      { id: 'r3-8-crak', name: '8 Crak', image: EightCrak, suit: 'crak', value: 8 },
+      { id: 'r3-9-crak', name: '9 Crak', image: NineCrak, suit: 'crak', value: 9 },
+      { id: 'r3-3-bam', name: '3 Bam', image: ThreeBam, suit: 'bam', value: 3 },
+      { id: 'r3-4-bam', name: '4 Bam', image: FourBam, suit: 'bam', value: 4 },
+      { id: 'r3-5-bam', name: '5 Bam', image: FiveBam, suit: 'bam', value: 5 },
+      { id: 'r3-6-bam', name: '6 Bam', image: SixBam, suit: 'bam', value: 6 },
+      { id: 'r3-7-bam', name: '7 Bam', image: SevenBam, suit: 'bam', value: 7 },
     ],
     successMessage: 'Nice job! Looks like you’re ready for Lesson 4',
     wrongCountMessage: 'Good try. Check each section again and count how many tiles are in each run',
@@ -273,6 +321,10 @@ export default function LessonThree() {
   const canSubmitRound = leftTiles.length === 0
 
   const getTileImage = (tile: TileDefinition, index: number) => {
+    if (tile.image) {
+      return tile.image
+    }
+
     const identity = tile.matchKey ?? tile.name ?? `${tile.suit ?? 'tile'}-${tile.value ?? index}`
     const hash = [...identity].reduce((sum, char) => sum + char.charCodeAt(0), 0)
     return tileImages[hash % tileImages.length]
@@ -426,7 +478,7 @@ export default function LessonThree() {
                           onDragStart={() => handleTileDragStart(tile.id)}
                           className="flex h-[84px] w-[60px] shrink-0 flex-col items-center justify-center rounded-xl border border-emerald-100/40 bg-white/10 p-1 shadow-sm"
                         >
-                          <img src={getTileImage(tile, index)} alt={tile.name} className="h-[58px] w-full rounded-md object-cover" />
+                          <img src={getTileImage(tile, index)} alt={tile.name} className="h-[58px] w-full rounded-md object-contain" />
                           <div className="mt-1 text-[8px] font-medium text-white/95 text-center leading-tight">{tile.name}</div>
                         </div>
                       ))}
@@ -453,8 +505,7 @@ export default function LessonThree() {
                       onDragStart={() => handleTileDragStart(tile.id)}
                       className="flex h-28 w-20 cursor-grab flex-col items-center justify-center rounded-xl border border-emerald-100/40 bg-white/10 p-2 text-center shadow-sm active:cursor-grabbing"
                     >
-                      <img src={getTileImage(tile, index)} alt={tile.name} className="h-20 w-full rounded-md object-cover" />
-                      <div className="mt-2 text-[9px] font-medium text-white/95 leading-tight">{tile.name}</div>
+                      <img src={getTileImage(tile, index)} alt={tile.name} className="h-20 w-full rounded-md object-contain" />
                     </div>
                   ))}
                 </div>

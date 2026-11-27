@@ -1,17 +1,30 @@
 import { useMemo, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import LessonLayout from '@/pages/lessons/LessonLayout'
-import tablePlaceholder from '@/tile_images/table-placeholder.svg'
 import placeholderOne from '@/tile_images/tile-placeholder-1.svg'
 import OneBam from '@/tile_images/1-bam.jpg'
-import NineDot from '@/tile_images/9-dot.jpg'
+import TwoBam from '@/tile_images/2-bam.jpg'
+import ThreeBam from '@/tile_images/3-bam.jpg'
+import FourBam from '@/tile_images/4-bam.jpg'
+import FiveBam from '@/tile_images/5-bam.jpg'
+import SixBam from '@/tile_images/6-bam.jpg'
+import SevenBam from '@/tile_images/7-bam.jpg'
+import EightBam from '@/tile_images/8-bam.jpg'
+import NineBam from '@/tile_images/9-bam.jpg'
 import FourCrak from '@/tile_images/4-crak.jpg'
+import NineDot from '@/tile_images/9-dot.jpg'
 import Soap from '@/tile_images/soap.jpg'
 import RedDragon from '@/tile_images/red.jpg'
 import GreenDragon from '@/tile_images/green.jpg'
 import Flower from '@/tile_images/flower-1.jpg'
+import FlowerOne from '@/tile_images/flower-1.jpg'
+import FlowerTwo from '@/tile_images/flower-2.jpg'
+import FlowerThree from '@/tile_images/flower-3.png'
+import FlowerFour from '@/tile_images/flower-4.png'
 import EastWind from '@/tile_images/east.jpg'
 import NorthWind from '@/tile_images/north.jpg'
+import WestWind from '@/tile_images/west.jpg'
+import SouthWind from '@/tile_images/south.jpg'
 import Joker from '@/tile_images/joker.jpg'
 
 
@@ -25,6 +38,17 @@ const lessonGroups = [
 		),
 		imageCount: 9,
 		layout: 'grid-cols-3',
+		images: [
+			OneBam,
+			TwoBam,
+			ThreeBam,
+			FourBam,
+			FiveBam,
+			SixBam,
+			SevenBam,
+			EightBam,
+			NineBam,
+		],
 	},
 	{
 		title: 'Winds',
@@ -35,6 +59,7 @@ const lessonGroups = [
 		),
 		imageCount: 4,
 		layout: 'grid-cols-2',
+		images: [NorthWind, EastWind, WestWind, SouthWind],
 	},
 	{
 		title: 'Dragons',
@@ -45,6 +70,7 @@ const lessonGroups = [
 		),
 		imageCount: 3,
 		layout: 'dragon',
+		images: [GreenDragon, RedDragon, Soap],
 	},
 	{
 		title: 'Flowers',
@@ -55,6 +81,7 @@ const lessonGroups = [
 		),
 		imageCount: 4,
 		layout: 'grid-cols-2',
+		images: [FlowerOne, FlowerTwo, FlowerThree, FlowerFour],
 	},
 	{
 		title: 'Jokers',
@@ -64,6 +91,7 @@ const lessonGroups = [
 			</>),
 		imageCount: 1,
 		layout: 'grid-cols-1',
+		images: [Joker],
 	},
 ] as const
 
@@ -141,9 +169,9 @@ export default function LessonOne() {
 		() =>
 			Array.from({ length: currentGroup.imageCount }, (_, index) => ({
 				id: `${currentGroup.title}-${index + 1}`,
-				src: placeholderOne,
+				src: 'images' in currentGroup ? currentGroup.images[index] ?? placeholderOne : placeholderOne,
 			})),
-		[currentGroup.imageCount, currentGroup.title]
+		[currentGroup]
 	)
 
 	const shuffledAvailableTiles = useMemo(
@@ -303,49 +331,51 @@ export default function LessonOne() {
 					</div>
 				}
 				rightContent={
-					<div className="space-y-4">
-						{currentGroup.layout === 'dragon' ? (
-							<div className="space-y-3">
-								<div className="grid grid-cols-2 gap-3">
-									{tileImages.slice(0, 2).map((tile) => (
+					<div className="flex w-full justify-center">
+						<div className="mx-auto w-fit max-w-full space-y-4">
+							{currentGroup.layout === 'dragon' ? (
+								<div className="space-y-3">
+									<div className="grid grid-cols-2 justify-center gap-3">
+										{tileImages.slice(0, 2).map((tile) => (
+											<div
+												key={tile.id}
+												className="w-28 rounded-xl border border-border bg-background p-2"
+											>
+												<img
+													src={tile.src}
+													alt={tile.id}
+													className="h-24 w-full rounded-md object-contain"
+												/>
+											</div>
+										))}
+									</div>
+									<div className="flex justify-center">
+										<div className="w-28 rounded-xl border border-border bg-background p-2">
+											<img
+												src={tileImages[2].src}
+												alt={tileImages[2].id}
+												className="h-24 w-full rounded-md object-contain"
+											/>
+										</div>
+									</div>
+								</div>
+							) : (
+								<div className={`grid ${currentGroup.layout} justify-center gap-3`}>
+									{tileImages.map((tile) => (
 										<div
 											key={tile.id}
-											className="rounded-xl border border-border bg-background p-2"
+											className="w-28 rounded-xl border border-border bg-background p-2"
 										>
 											<img
 												src={tile.src}
 												alt={tile.id}
-												className="h-24 w-full rounded-md object-cover"
+												className="h-24 w-full rounded-md object-contain"
 											/>
 										</div>
 									))}
 								</div>
-								<div className="flex justify-center">
-									<div className="w-1/2 rounded-xl border border-border bg-background p-2">
-										<img
-											src={tileImages[2].src}
-											alt={tileImages[2].id}
-											className="h-24 w-full rounded-md object-cover"
-										/>
-									</div>
-								</div>
-							</div>
-						) : (
-							<div className={`grid ${currentGroup.layout} gap-3`}>
-								{tileImages.map((tile) => (
-									<div
-										key={tile.id}
-										className="rounded-xl border border-border bg-background p-2"
-									>
-										<img
-											src={tile.src}
-											alt={tile.id}
-											className="h-24 w-full rounded-md object-cover"
-										/>
-									</div>
-								))}
-							</div>
-						)}
+							)}
+						</div>
 					</div>
 				}
 			/>
@@ -364,15 +394,8 @@ export default function LessonOne() {
 
 			{showActivity && (
 				<div
-					className="relative overflow-hidden rounded-3xl border border-border bg-surface"
-					style={{
-						backgroundImage: `url(${tablePlaceholder})`,
-						backgroundSize: 'cover',
-						backgroundPosition: 'center',
-					}}
+					className="relative overflow-hidden rounded-3xl border border-[#8F7466] bg-[#8F7466]"
 				>
-					<div className="absolute inset-0 bg-foreground/15" />
-
 					<div className="relative z-10 p-6">
 						<div className="mb-5">
 							<h2 className="text-2xl font-semibold text-white">Activity</h2>
@@ -381,7 +404,7 @@ export default function LessonOne() {
 							</p>
 						</div>
 
-						<div className="grid gap-5 lg:grid-cols-[1.1fr_0.9fr]">
+						<div className="grid gap-5 lg:grid-cols-[0.8fr_1.2fr]">
 							<div className="rounded-2xl border border-white/30 bg-black/10 p-4 backdrop-blur-[2px]">
 								<div className="grid grid-cols-2 gap-3">
 									{shuffledAvailableTiles.map((tile) => (
@@ -389,12 +412,12 @@ export default function LessonOne() {
 											key={tile.id}
 											draggable
 											onDragStart={() => handleTileDragStart(tile.id)}
-											className="cursor-grab rounded-xl border border-white/40 bg-white/10 p-2 text-center shadow-sm active:cursor-grabbing"
+											className="mx-auto w-fit cursor-grab rounded-xl border border-white/40 bg-white/10 p-1 text-center shadow-sm active:cursor-grabbing"
 										>
 											<img
 												src={tile.image}
 												alt={tile.name}
-												className="h-20 w-full rounded-md object-contain"
+												className="h-32 w-24 rounded-md object-contain"
 											/>
 										</div>
 									))}
@@ -421,12 +444,12 @@ export default function LessonOne() {
 												{placedTilesByCategory[category.id]?.map((tile) => (
 													<div
 														key={tile.id}
-														className="rounded-md border border-white/40 bg-white/10 p-2"
+														className="w-fit rounded-md border border-white/40 bg-white/10 p-1"
 													>
 														<img
 															src={tile.image}
 															alt={tile.name}
-															className="mx-auto h-14 w-full rounded-md object-contain"
+															className="mx-auto h-20 w-16 rounded-md object-contain"
 														/>
 													</div>
 												))}
